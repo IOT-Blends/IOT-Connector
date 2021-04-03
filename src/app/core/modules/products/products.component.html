@@ -8,7 +8,7 @@
     [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar color="primary" style="background-color: #673ab7">
-      <span>IOC Connector</span></mat-toolbar
+      <span>IOT Connector</span></mat-toolbar
     >
     <mat-nav-list>
       <a
@@ -52,21 +52,9 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span *ngIf="isHandset$ | async">IOC Connector</span>
-    </mat-toolbar>
     <!-- Add Content Here -->
     <main class="container-fluid">
-      <app-product-nav></app-product-nav>
+      <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
