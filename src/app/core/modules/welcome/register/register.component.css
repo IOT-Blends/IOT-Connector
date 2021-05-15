@@ -1,0 +1,24 @@
+/* .registerCard {
+  min-width: 80%;
+} */
+
+.example-stepper {
+  margin-top: 8px;
+}
+
+.registerCard {
+  width: 70vw;
+}
+
+.profilePic {
+  min-height: 30vh;
+  /* margin-top: 5px; */
+}
+
+form {
+  margin-top: 5%;
+}
+
+mat-form-field {
+  width: 100%;
+}

@@ -1,1 +1,178 @@
-<p>Welcome component</p>
+<!-- <div fxLayoutAlign="center center">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-card class="registerCard">
+      <mat-card-header>
+        <mat-card-title>Register your Account</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayout="column">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            name="firstName"
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+          <mat-error
+            *ngIf="registerForm.controls['firstName'].hasError('required')"
+          >
+            First Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            name="lastName"
+            placeholder="Last Name"
+            formControlName="lastName"
+          />
+          <mat-error
+            *ngIf="registerForm.controls['lastName'].hasError('required')"
+          >
+            Last name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Enter an email address"
+            required
+          />
+          <mat-error *ngIf="!registerForm.controls['email'].valid">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Enter a Pasword"
+            formControlName="password"
+          />
+          <mat-error
+            *ngIf="registerForm.controls['password'].hasError('required')"
+          >
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Mobile Number</mat-label>
+          <input
+            matInput
+            placeholder="Enter a Mobilr Number"
+            formControlName="mobileNumber"
+          />
+          <mat-error
+            *ngIf="registerForm.controls['mobileNumber'].hasError('required')"
+          >
+            Mobile Number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choose your DOB</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choose your Gender</mat-label>
+          <mat-select>
+            <mat-option> Male </mat-option>
+            <mat-option> Female </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div formGroupName="address">
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="Address Line 1"
+              formControlName="addressLine1"
+            ></textarea>
+            <mat-error
+              *ngIf="registerForm.controls['addressLine1'].hasError('required')"
+            >
+              Address Line 1 is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="Address Line 2"
+              formControlName="addressLine2"
+            ></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              matInput
+              #postalCode
+              maxlength="5"
+              placeholder="Postal Code"
+              type="number"
+              formControlName="postalCode"
+            />
+            <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="State" formControlName="state">
+              <mat-option> Tamil Nadu </mat-option>
+              <mat-option> Kerala </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="registerForm.controls['state'].hasError('required')"
+            >
+              State is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="City" formControlName="city" />
+            <mat-error
+              *ngIf="registerForm.controls['city'].hasError('required')"
+            >
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Country" formControlName="country">
+              <mat-option> India </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="registerForm.controls['country'].hasError('required')"
+            >
+              Country is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field>
+          <mat-label>Creator Email</mat-label>
+          <input
+            formControlName="creator"
+            matInput
+            placeholder="Enter a creator email"
+            required
+          />
+          <mat-error *ngIf="!registerForm.controls['creator'].valid">
+            Creator Email is required
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div> -->

@@ -1,0 +1,339 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="registerCard">
+    <mat-horizontal-stepper class="example-stepper">
+      <mat-card-content>
+        <mat-step [stepControl]="generalGroup" label="General Details">
+          <form [formGroup]="generalGroup">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              fxLayoutGap="10px"
+              fxLayoutGap.lt-sm="30px"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign.lt-sm="space-around streach"
+            >
+              <mat-card class="profilePic" fxFlex="30">
+                <img src="" alt="Profile Pic" srcset="" />
+              </mat-card>
+              <div
+                fxLayout="column"
+                fxFlex="50"
+                fxLayoutAlign="space-around center"
+              >
+                <mat-form-field>
+                  <mat-label>First Name</mat-label>
+                  <input
+                    matInput
+                    name="firstName"
+                    placeholder="First Name"
+                    formControlName="firstName"
+                  />
+                  <mat-error
+                    *ngIf="
+                      generalGroup.hasError(
+                        'required',
+                        'generalGroup.firstName'
+                      )
+                    "
+                  >
+                    First Name is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Last Name</mat-label>
+                  <input
+                    matInput
+                    name="lastName"
+                    placeholder="Last Name"
+                    formControlName="lastName"
+                  />
+                  <mat-error
+                    *ngIf="
+                      generalGroup.hasError('required', 'generalGroup.lastName')
+                    "
+                  >
+                    Laste Name is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input
+                    formControlName="email"
+                    matInput
+                    placeholder="Enter an email address"
+                    required
+                  />
+                  <mat-error
+                    *ngIf="
+                      generalGroup.hasError('required', 'generalGroup.email')
+                    "
+                  >
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              style="margin-top: 15px"
+              fxLayoutGap="35px"
+              fxLayoutGap.lt-sm="10px"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign.lt-sm="space-around streach"
+            >
+              <mat-form-field>
+                <mat-label>Mobile Number</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter a Mobilr Number"
+                  formControlName="mobileNumber"
+                />
+                <mat-error
+                  *ngIf="
+                    generalGroup.hasError(
+                      'required',
+                      'generalGroup.mobileNumber'
+                    )
+                  "
+                >
+                  Mobile Number is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter a Pasword"
+                  formControlName="password"
+                />
+                <mat-error
+                  *ngIf="
+                    generalGroup.hasError('required', 'generalGroup.password')
+                  "
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              fxLayoutGap="35px"
+              fxLayoutGap.lt-sm="10px"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign.lt-sm="space-around streach"
+            >
+              <mat-form-field>
+                <mat-label>Choose your DOB</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="dob"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Choose your Gender</mat-label>
+                <mat-select>
+                  <mat-option> Male </mat-option>
+                  <mat-option> Female </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="addressGroup" label="Address Details">
+          <form [formGroup]="addressGroup">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              fxLayoutGap="35px"
+              fxLayoutGap.lt-sm="30px"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign.lt-sm="space-around streach"
+            >
+              <mat-form-field>
+                <mat-label>Enter Address Line 1</mat-label>
+                <input
+                  matInput
+                  placeholder="Address Line 1"
+                  formControlName="addressLine1"
+                />
+                <mat-error
+                  *ngIf="
+                    addressGroup.hasError(
+                      'required',
+                      'addressGroup.addressLine1'
+                    )
+                  "
+                >
+                  Address Line 1 is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Enter Address Line 2</mat-label>
+                <input
+                  matInput
+                  placeholder="Address Line 2"
+                  formControlName="addressLine2"
+                />
+              </mat-form-field>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              fxLayoutGap="35px"
+              fxLayoutGap.lt-sm="10px"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign.lt-sm="space-around streach"
+            >
+              <mat-form-field>
+                <mat-label>Enter your Postal Code</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter your Postal Code"
+                  formControlName="postalCode"
+                />
+                <mat-error
+                  *ngIf="
+                    addressGroup.hasError('required', 'addressGroup.postalCode')
+                  "
+                >
+                  Postal Code is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Choose your State</mat-label>
+                <input
+                  matInput
+                  placeholder="Choose your State"
+                  formControlName="state"
+                />
+                <mat-error
+                  *ngIf="
+                    addressGroup.hasError('required', 'addressGroup.state')
+                  "
+                >
+                  State is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              fxLayoutGap="35px"
+              fxLayoutGap.lt-sm="10px"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign.lt-sm="space-around streach"
+            >
+              <mat-form-field>
+                <mat-label>Choose Your City</mat-label>
+                <input
+                  matInput
+                  placeholder="Choose your City"
+                  formControlName="city"
+                />
+                <mat-error
+                  *ngIf="addressGroup.hasError('required', 'addressGroup.city')"
+                >
+                  City is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Enter your Country</mat-label>
+                <input
+                  matInput
+                  placeholder="Country"
+                  formControlName="country"
+                />
+                <mat-error
+                  *ngIf="
+                    addressGroup.hasError('required', 'addressGroup.country')
+                  "
+                >
+                  Country is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="accessGroup" label="Access Roles">
+          <form [formGroup]="accessGroup">
+            <div
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              fxLayoutGap="35px"
+              fxLayoutGap.lt-sm="30px"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign.lt-sm="space-around streach"
+            >
+              <mat-form-field>
+                <mat-label>Enter Access Level</mat-label>
+                <input
+                  matInput
+                  placeholder="Access Level"
+                  formControlName="accessLevel"
+                />
+                <mat-error
+                  *ngIf="
+                    accessGroup.hasError('required', 'accessGroup.accessLevel')
+                  "
+                >
+                  Access Level is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Role</mat-label>
+                <input
+                  matInput
+                  placeholder="Address Line 2"
+                  formControlName="role"
+                />
+                <mat-error
+                  *ngIf="accessGroup.hasError('required', 'accessGroup.role')"
+                >
+                  Access Level is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+          </div>
+        </mat-step>
+      </mat-card-content>
+    </mat-horizontal-stepper>
+  </mat-card>
+</div>
