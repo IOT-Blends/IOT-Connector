@@ -1,8 +1,12 @@
 <div fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="registerCard">
-    <mat-horizontal-stepper class="example-stepper">
+    <mat-horizontal-stepper labelPosition="bottom">
       <mat-card-content>
-        <mat-step [stepControl]="generalGroup" label="General Details">
+        <mat-step
+          [stepControl]="generalGroup"
+          label="General Details"
+          state="general"
+        >
           <form [formGroup]="generalGroup">
             <div
               fxLayout="row"
@@ -17,7 +21,7 @@
               </mat-card>
               <div
                 fxLayout="column"
-                fxFlex="50"
+                fxFlex="55"
                 fxLayoutAlign="space-around center"
               >
                 <mat-form-field>
@@ -30,10 +34,7 @@
                   />
                   <mat-error
                     *ngIf="
-                      generalGroup.hasError(
-                        'required',
-                        'generalGroup.firstName'
-                      )
+                      generalGroup.controls['firstName'].hasError('required')
                     "
                   >
                     First Name is <strong>required</strong>
@@ -49,10 +50,10 @@
                   />
                   <mat-error
                     *ngIf="
-                      generalGroup.hasError('required', 'generalGroup.lastName')
+                      generalGroup.controls['lastName'].hasError('required')
                     "
                   >
-                    Laste Name is <strong>required</strong>
+                    Last Name is <strong>required</strong>
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field>
@@ -64,9 +65,7 @@
                     required
                   />
                   <mat-error
-                    *ngIf="
-                      generalGroup.hasError('required', 'generalGroup.email')
-                    "
+                    *ngIf="generalGroup.controls['email'].hasError('required')"
                   >
                     Email is <strong>required</strong>
                   </mat-error>
@@ -92,10 +91,7 @@
                 />
                 <mat-error
                   *ngIf="
-                    generalGroup.hasError(
-                      'required',
-                      'generalGroup.mobileNumber'
-                    )
+                    generalGroup.controls['mobileNumber'].hasError('required')
                   "
                 >
                   Mobile Number is <strong>required</strong>
@@ -110,9 +106,7 @@
                   formControlName="password"
                 />
                 <mat-error
-                  *ngIf="
-                    generalGroup.hasError('required', 'generalGroup.password')
-                  "
+                  *ngIf="generalGroup.controls['password'].hasError('required')"
                 >
                   Password is <strong>required</strong>
                 </mat-error>
@@ -139,23 +133,43 @@
                   [for]="picker"
                 ></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                  *ngIf="generalGroup.controls['dob'].hasError('required')"
+                >
+                  DOB is <strong>required</strong>
+                </mat-error>
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Choose your Gender</mat-label>
-                <mat-select>
-                  <mat-option> Male </mat-option>
-                  <mat-option> Female </mat-option>
+                <mat-select
+                  matInput
+                  placeholder="Choose your Gender"
+                  formControlName="gender"
+                >
+                  <mat-option value="Male"> Male </mat-option>
+                  <mat-option value="Female"> Female </mat-option>
                 </mat-select>
+                <mat-error
+                  *ngIf="generalGroup.controls['gender'].hasError('required')"
+                >
+                  Gender is <strong>required</strong>
+                </mat-error>
               </mat-form-field>
             </div>
 
-            <div>
-              <button mat-button matStepperNext>Next</button>
+            <div class="actionButtionDiv" fxLayoutAlign="end">
+              <button mat-flat-button color="primary" matStepperNext>
+                Next
+              </button>
             </div>
           </form>
         </mat-step>
 
-        <mat-step [stepControl]="addressGroup" label="Address Details">
+        <mat-step
+          [stepControl]="addressGroup"
+          label="Address Details"
+          state="address"
+        >
           <form [formGroup]="addressGroup">
             <div
               fxLayout="row"
@@ -174,10 +188,7 @@
                 />
                 <mat-error
                   *ngIf="
-                    addressGroup.hasError(
-                      'required',
-                      'addressGroup.addressLine1'
-                    )
+                    addressGroup.controls['addressLine1'].hasError('required')
                   "
                 >
                   Address Line 1 is <strong>required</strong>
@@ -210,7 +221,7 @@
                 />
                 <mat-error
                   *ngIf="
-                    addressGroup.hasError('required', 'addressGroup.postalCode')
+                    addressGroup.controls['postalCode'].hasError('required')
                   "
                 >
                   Postal Code is <strong>required</strong>
@@ -225,9 +236,7 @@
                   formControlName="state"
                 />
                 <mat-error
-                  *ngIf="
-                    addressGroup.hasError('required', 'addressGroup.state')
-                  "
+                  *ngIf="addressGroup.controls['state'].hasError('required')"
                 >
                   State is <strong>required</strong>
                 </mat-error>
@@ -249,7 +258,7 @@
                   formControlName="city"
                 />
                 <mat-error
-                  *ngIf="addressGroup.hasError('required', 'addressGroup.city')"
+                  *ngIf="addressGroup.controls['city'].hasError('required')"
                 >
                   City is <strong>required</strong>
                 </mat-error>
@@ -263,23 +272,25 @@
                   formControlName="country"
                 />
                 <mat-error
-                  *ngIf="
-                    addressGroup.hasError('required', 'addressGroup.country')
-                  "
+                  *ngIf="addressGroup.controls['country'].hasError('required')"
                 >
                   Country is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
             </div>
 
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+            <div class="actionButtionDiv" fxLayoutAlign="end">
+              <button mat-flat-button color="accent" matStepperPrevious>
+                Back
+              </button>
+              <button mat-flat-button color="primary" matStepperNext>
+                Next
+              </button>
             </div>
           </form>
         </mat-step>
 
-        <mat-step [stepControl]="accessGroup" label="Access Roles">
+        <mat-step [stepControl]="accessGroup" label="Access Roles" state="role">
           <form [formGroup]="accessGroup">
             <div
               fxLayout="row"
@@ -298,7 +309,7 @@
                 />
                 <mat-error
                   *ngIf="
-                    accessGroup.hasError('required', 'accessGroup.accessLevel')
+                    accessGroup.controls['accessLevel'].hasError('required')
                   "
                 >
                   Access Level is <strong>required</strong>
@@ -307,32 +318,48 @@
 
               <mat-form-field>
                 <mat-label>Role</mat-label>
-                <input
-                  matInput
-                  placeholder="Address Line 2"
-                  formControlName="role"
-                />
+                <input matInput placeholder="Role" formControlName="role" />
                 <mat-error
-                  *ngIf="accessGroup.hasError('required', 'accessGroup.role')"
+                  *ngIf="accessGroup.controls['role'].hasError('required')"
                 >
                   Access Level is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
             </div>
 
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+            <div class="actionButtionDiv" fxLayoutAlign="end">
+              <button mat-flat-button color="accent" matStepperPrevious>
+                Back
+              </button>
+              <button mat-flat-button color="primary" matStepperNext>
+                Next
+              </button>
             </div>
           </form>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
+          <div class="actionButtionDiv" fxLayoutAlign="end">
+            <button mat-flat-button color="accent" matStepperPrevious>
+              Back
+            </button>
+            <button mat-raised-button type="submit" color="primary">
+              Register
+            </button>
           </div>
         </mat-step>
+
+        <!-- Icon overrides. -->
+        <ng-template matStepperIcon="general">
+          <mat-icon>perm_identity</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="address">
+          <mat-icon>contact_mail</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="role">
+          <mat-icon>manage_accounts</mat-icon>
+        </ng-template>
       </mat-card-content>
     </mat-horizontal-stepper>
   </mat-card>

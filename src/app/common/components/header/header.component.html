@@ -1,8 +1,18 @@
 <mat-toolbar color="primary">
-  <span>IOT Connector</span>
-  <span class="spacer"></span>
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+    <div>
+      <span>IOT Connector</span>
+    </div>
+    <div fxHide.lt-sm>
+      <button mat-button routerLink="/welcome/register">Register</button>
+      <button mat-button routerLink="/welcome/login">Login</button>
+      <button mat-button routerLink="/logout">Logout</button>
+    </div>
+  </mat-toolbar-row>
 
-  <a mat-button routerLink="/welcome/register">Register</a>
-  <a mat-button routerLink="/welcome/login">Login</a>
-  <a mat-button routerLink="/logout">Logout</a>
+  <mat-toolbar-row fxHide.gt-xs fxLayoutAlign="space-evenly center">
+    <button mat-button routerLink="/welcome/register">Register</button>
+    <button mat-button routerLink="/welcome/login">Login</button>
+    <button mat-button routerLink="/logout">Logout</button>
+  </mat-toolbar-row>
 </mat-toolbar>

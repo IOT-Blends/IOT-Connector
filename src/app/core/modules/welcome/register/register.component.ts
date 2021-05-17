@@ -1,5 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { StepperOrientation } from '@angular/cdk/stepper';
+import {
+  StepperOrientation,
+  STEPPER_GLOBAL_OPTIONS,
+} from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -10,6 +13,12 @@ import { UserRegister } from 'src/app/core/models/UserRegister';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false },
+    },
+  ],
 })
 export class RegisterComponent implements OnInit {
   stepperOrientation: Observable<StepperOrientation>;
