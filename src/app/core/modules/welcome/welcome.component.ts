@@ -1,9 +1,4 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { CommonService } from 'src/app/shared/common.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-welcome',

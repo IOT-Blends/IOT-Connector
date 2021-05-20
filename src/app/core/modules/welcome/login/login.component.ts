@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
+import { WelcomeService } from '../welcome.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   hide: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private commonService: CommonService
+  ) {}
 
   ngOnInit() {}
 
@@ -23,5 +30,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log(this.loginForm.value);
+    this.commonService.isUserLoggedIn(true);
+    this.router.navigate(['/products']);
   }
 }

@@ -1,13 +1,8 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
-import {
-  StepperOrientation,
-  STEPPER_GLOBAL_OPTIONS,
-} from '@angular/cdk/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { UserRegister } from 'src/app/core/models/UserRegister';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -21,13 +16,12 @@ import { UserRegister } from 'src/app/core/models/UserRegister';
   ],
 })
 export class RegisterComponent implements OnInit {
-  stepperOrientation: Observable<StepperOrientation>;
-
-  constructor(private fb: FormBuilder, breakpointObserver: BreakpointObserver) {
-    this.stepperOrientation = breakpointObserver
-      .observe('(min-width: 800px)')
-      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
-  }
+  isEditable = true;
+  constructor(
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -82,6 +76,15 @@ export class RegisterComponent implements OnInit {
   });
 
   onSubmit(): void {
+    this.isEditable = false;
     alert('Thanks!');
+  }
+
+  login() {
+    this.router.navigate(['/welcome/login']);
+  }
+
+  onNext() {
+    this.toastr.success('Success Message', 'Success');
   }
 }

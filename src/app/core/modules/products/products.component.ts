@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { CommonService } from 'src/app/shared/common.service';
+import { NavToggleService } from 'src/app/shared/navToggle.service';
 
 @Component({
   selector: 'app-products',
@@ -22,11 +22,11 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private commonService: CommonService
+    private navToggleService: NavToggleService
   ) {}
 
   ngAfterViewInit(): void {
-    this.commonService.setSidenav(this.sidenav);
+    this.navToggleService.setSidenav(this.sidenav);
   }
 
   onLogout() {

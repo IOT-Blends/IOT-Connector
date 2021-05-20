@@ -1,11 +1,12 @@
 <div fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="registerCard">
-    <mat-horizontal-stepper labelPosition="bottom">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
       <mat-card-content>
         <mat-step
           [stepControl]="generalGroup"
           label="General Details"
           state="general"
+          [editable]="isEditable"
         >
           <form [formGroup]="generalGroup">
             <div
@@ -158,7 +159,12 @@
             </div>
 
             <div class="actionButtionDiv" fxLayoutAlign="end">
-              <button mat-flat-button color="primary" matStepperNext>
+              <button
+                mat-flat-button
+                color="primary"
+                (click)="onNext()"
+                matStepperNext
+              >
                 Next
               </button>
             </div>
@@ -169,6 +175,7 @@
           [stepControl]="addressGroup"
           label="Address Details"
           state="address"
+          [editable]="isEditable"
         >
           <form [formGroup]="addressGroup">
             <div
@@ -290,7 +297,12 @@
           </form>
         </mat-step>
 
-        <mat-step [stepControl]="accessGroup" label="Access Roles" state="role">
+        <mat-step
+          [stepControl]="accessGroup"
+          label="Access Roles"
+          [editable]="isEditable"
+          state="role"
+        >
           <form [formGroup]="accessGroup">
             <div
               fxLayout="row"
@@ -331,8 +343,14 @@
               <button mat-flat-button color="accent" matStepperPrevious>
                 Back
               </button>
-              <button mat-flat-button color="primary" matStepperNext>
-                Next
+              <button
+                type="submit"
+                mat-flat-button
+                color="primary"
+                matStepperNext
+                (click)="onSubmit()"
+              >
+                Submit
               </button>
             </div>
           </form>
@@ -341,11 +359,13 @@
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
           <div class="actionButtionDiv" fxLayoutAlign="end">
-            <button mat-flat-button color="accent" matStepperPrevious>
-              Back
-            </button>
-            <button mat-raised-button type="submit" color="primary">
-              Register
+            <button
+              mat-raised-button
+              (click)="login()"
+              type="submit"
+              color="primary"
+            >
+              Login
             </button>
           </div>
         </mat-step>

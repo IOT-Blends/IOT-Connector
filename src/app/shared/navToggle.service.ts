@@ -4,7 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 @Injectable({
   providedIn: 'root',
 })
-export class CommonService {
+export class NavToggleService {
   private sidenav!: MatSidenav;
 
   public setSidenav(sidenav: MatSidenav) {
